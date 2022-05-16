@@ -5,7 +5,7 @@ const { exitWithError, info, error } = require('./Logger.js')
 const { execSync } = require('child_process')
 const { celebrate } = require('../func/celebrate.js')
 const path = require('path')
-const { projectPresets } = require('../setting/presets.js')
+const { projectPresets, presetList } = require('../setting/presets.js')
 
 class Project { 
 
@@ -63,8 +63,14 @@ class Project {
     }
   }
 
-  async createWithTemplate({ template, dir, projectName, tag}) {
-    const { website, address, tag: tagSetting } = projectPresets[template]
+  async createWithTemplate({ template, dir, projectName, tag }) {
+    const preset = projectPresets[template]
+    if (!preset) { 
+      error(`没有该模板 ${preset}`)
+      info(`当前支持：${presetList}`)
+      exitWithError('没有对应的模板')
+    }
+    const { website, address, tag: tagSetting = {} } = preset
     const targetPath = path.resolve(process.cwd(), `./${dir ? dir : ''}`, `./${projectName}`)
     await this._downloadTemplate(
       website,

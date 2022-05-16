@@ -5,7 +5,7 @@ const path = require('path')
 const fs = require('fs')
 const rimraf = require('rimraf')
 const ProjectService = require('../service/Project.js')
-const { mainTemplateTypeInquirer, libraryTemplateInquirer } = require('../service/Collector.js')
+const { mainTemplateTypeInquirer, libraryTemplateInquirer, projectTemplateInquirer } = require('../service/Collector.js')
 const { TEMPLATE_MAIN_TYPE } = require('../enumeration/TEMPLATE_MAIN_TYPE.js')
 class Generator { 
   constructor (name, options){
@@ -56,6 +56,11 @@ class Generator {
     if (!template) {
       const { templateType } = await mainTemplateTypeInquirer()
       switch (templateType) { 
+      
+      case TEMPLATE_MAIN_TYPE.PROJECT:
+        const { runtime, library, cssLibrary } = await projectTemplateInquirer()
+        presetTemplate = `${runtime}-${library}${cssLibrary ? `-${cssLibrary}` : ''}`
+        break;
 
       case TEMPLATE_MAIN_TYPE.LIBRARY:
         const { template: templateFromInquirer } = await libraryTemplateInquirer()
