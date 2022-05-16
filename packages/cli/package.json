@@ -1,6 +1,6 @@
 {
   "name": "@slfk/cli",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "personal cli tool",
   "author": "shaolianfk <871089057@qq.com>",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "脚手架"
   ],
   "dependencies": {
-    "@slfk/cli-tools": "^0.0.4",
+    "@slfk/cli-tools": "^0.0.5",
     "commander": "^9.2.0",
     "ora": "^4",
     "rimraf": "^3.0.2"
