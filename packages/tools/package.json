@@ -13,6 +13,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "slfk-cli",
+    "slfk-cli-tools",
+    "slfk",
+    "脚手架"
+  ],
   "dependencies": {
     "download-git-repo": "^3.0.2",
     "inquirer": "^8.2.4",

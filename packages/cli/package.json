@@ -3,7 +3,6 @@
   "version": "0.0.2",
   "description": "personal cli tool",
   "author": "shaolianfk <871089057@qq.com>",
-  "homepage": "",
   "license": "MIT",
   "main": "index.js",
   "bin": {
@@ -16,6 +15,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "slfk-cli",
+    "slfk-cli-tools",
+    "slfk",
+    "脚手架"
+  ],
   "dependencies": {
     "@slfk/cli-tools": "^0.0.2",
     "commander": "^9.2.0",
