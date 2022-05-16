@@ -5,7 +5,12 @@ const path = require('path')
 const fs = require('fs')
 const rimraf = require('rimraf')
 const ProjectService = require('../service/Project.js')
-const { mainTemplateTypeInquirer, libraryTemplateInquirer, projectTemplateInquirer } = require('../service/Collector.js')
+const {
+  basicInquirer,
+  mainTemplateTypeInquirer,
+  libraryTemplateInquirer,
+  projectTemplateInquirer
+} = require('../service/Collector.js')
 const { TEMPLATE_MAIN_TYPE } = require('../enumeration/TEMPLATE_MAIN_TYPE.js')
 class Generator { 
   constructor (name, options){
@@ -50,6 +55,8 @@ class Generator {
 
     await this._generateGuarder({ targetPath, force })
 
+    const { packageManager } = await basicInquirer()
+
     let presetTemplate = template
 
     // 没有命中预设模板时，进行询问
@@ -80,7 +87,8 @@ class Generator {
       template: presetTemplate,
       dir,
       projectName: this.projectName,
-      tag
+      tag,
+      packageManager
     })
   }
 }

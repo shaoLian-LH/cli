@@ -49,13 +49,26 @@ class Project {
   async _installDependencies({
     dir,
     projectName,
+    packageManager
   } = {
     dir: undefined,
-    projectName: undefined
+    projectName: undefined,
+    packageManager: 'npm'
   }) { 
     try {
       info('\n正在拉取依赖...')
-      execSync('yarn', { stdio: 'inherit' })
+      switch (packageManager) { 
+      case 'npm':
+        execSync('npm install', { stdio: 'inherit' })
+        break;
+      case 'yarn':
+        execSync('yarn', { stdio: 'inherit' })
+        break;
+      case 'pnpm':
+        execSync('pnpm install', { stdio: 'inherit' })
+        break;
+      }
+      
       celebrate(`${dir ? path.resolve(dir, `./${projectName}`) : projectName}`)
     } catch (err) { 
       error('\n安装依赖时出错\n')
@@ -63,7 +76,7 @@ class Project {
     }
   }
 
-  async createWithTemplate({ template, dir, projectName, tag }) {
+  async createWithTemplate({ template, dir, projectName, tag, packageManager }) {
     const preset = projectPresets[template]
     if (!preset) { 
       error(`没有该模板 ${preset}`)
@@ -80,7 +93,7 @@ class Project {
     )
     this._moveToProjectDir(targetPath)
     await this._initGitRepository()
-    await this._installDependencies({ dir, projectName })
+    await this._installDependencies({ dir, projectName, packageManager })
   }
 }
 
