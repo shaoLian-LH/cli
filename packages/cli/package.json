@@ -9,6 +9,10 @@
   "bin": {
     "slfk": "./index.js"
   },
+  "scripts": {
+    "link:local": "yarn link @slfk/cli-tools && yarn link",
+    "unlink:global": "yarn unlink -g @slfk/cli"
+  },
   "publishConfig": {
     "access": "public"
   },

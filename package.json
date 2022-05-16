@@ -7,7 +7,8 @@
   "scripts": {
     "prepare": "husky install",
     "postinstall": "npx lerna bootstrap --npm-client yarn --use-workspaces",
-    "link:local": "cd ./packages/tools && npm link && cd ../cli && npm link"
+    "link:local": "npx lerna run link:local",
+    "unlink:global": "npx lerna run unlink:global"
   },
   "lint-staged": {
     "packages/**/*.js": "eslint --fix"

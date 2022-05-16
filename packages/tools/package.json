@@ -6,6 +6,10 @@
   "homepage": "",
   "license": "MIT",
   "main": "./index.js",
+  "scripts": {
+    "link:local": "yarn link",
+    "unlink:global": "yarn unlink -g @slfk/cli-tools"
+  },
   "publishConfig": {
     "access": "public"
   },
