@@ -13,12 +13,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
+  "dependencies": {
+    "rimraf": "^3.0.2",
     "download-git-repo": "^3.0.2",
     "inquirer": "^8.2.4",
     "ora": "^4"
-  },
-  "dependencies": {
-    "rimraf": "^3.0.2"
   }
 }

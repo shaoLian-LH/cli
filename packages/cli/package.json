@@ -16,12 +16,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
+  "dependencies": {
+    "rimraf": "^3.0.2",
     "@slfk/cli-tools": "^0.0.1",
     "commander": "^9.2.0",
     "ora": "^4"
-  },
-  "dependencies": {
-    "rimraf": "^3.0.2"
   }
 }
