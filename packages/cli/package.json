@@ -1,16 +1,18 @@
 {
   "name": "@slfk/cli",
   "version": "0.0.4",
+  "engines": {
+    "node": ">=14.6.0"
+  },
   "description": "personal cli tool",
   "author": "shaolianfk <871089057@qq.com>",
   "license": "MIT",
   "main": "index.js",
   "bin": {
-    "slfk": "./index.js"
+    "slfk": "index.js"
   },
   "scripts": {
-    "link:local": "yarn link @slfk/cli-tools && yarn link",
-    "unlink:global": "yarn unlink -g @slfk/cli"
+    "start": "slfk create my-rollup-template"
   },
   "publishConfig": {
     "access": "public"
@@ -23,8 +25,6 @@
   ],
   "dependencies": {
     "@slfk/cli-tools": "^0.0.4",
-    "commander": "^9.2.0",
-    "ora": "^4",
-    "rimraf": "^3.0.2"
+    "commander": "^9.2.0"
   }
 }

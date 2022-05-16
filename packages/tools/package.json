@@ -1,15 +1,14 @@
 {
   "name": "@slfk/cli-tools",
   "version": "0.0.4",
+  "engines": {
+    "node": ">=14.6.0"
+  },
   "description": "cli public tool package",
   "author": "shaolianfk <871089057@qq.com>",
   "homepage": "",
   "license": "MIT",
   "main": "./index.js",
-  "scripts": {
-    "link:local": "yarn link",
-    "unlink:global": "yarn unlink -g @slfk/cli-tools"
-  },
   "publishConfig": {
     "access": "public"
   },
@@ -21,8 +20,6 @@
   ],
   "dependencies": {
     "download-git-repo": "^3.0.2",
-    "inquirer": "^8.2.4",
-    "ora": "^4",
-    "rimraf": "^3.0.2"
+    "inquirer": "^8.2.4"
   }
 }

@@ -1,19 +1,28 @@
 {
+  "name": "@slfk/monorepo",
+  "private": true,
+  "engines": {
+    "node": ">=14.6.0"
+  },
+  "packageManager": "pnpm@7.1.0",
   "license": "MIT",
-  "workspaces": [
-    "packages/cli",
-    "packages/tools"
+  "keywords": [
+    "slfk-cli",
+    "slfk-cli-tools",
+    "slfk",
+    "脚手架"
   ],
   "scripts": {
     "prepare": "husky install",
-    "postinstall": "npx lerna bootstrap --npm-client yarn --use-workspaces",
-    "link:local": "npx lerna run link:local",
-    "unlink:global": "npx lerna run unlink:global"
+	  "preinstall": "npx only-allow pnpm"
   },
   "lint-staged": {
     "packages/**/*.js": "eslint --fix"
   },
-  "private": true,
+  "dependencies": {
+	"ora": "^4",
+    "rimraf": "^3.0.2"
+  },
   "devDependencies": {
     "chalk": "^4.0.1",
     "eslint": "^8.15.0",
@@ -21,5 +30,9 @@
     "lerna": "^4.0.0",
     "lint-staged": "^12.4.1"
   },
-  "packageManager": "yarn@1.22.17"
+  "pnpm": {
+    "overrides": {
+      "slfk": "workspace:*"
+    }
+  }
 }
