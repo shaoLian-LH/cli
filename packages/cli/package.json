@@ -1,6 +1,6 @@
 {
   "name": "@slfk/cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "personal cli tool",
   "author": "shaolianfk <871089057@qq.com>",
   "homepage": "",
@@ -17,7 +17,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@slfk/cli-tools": "^0.0.0",
+    "@slfk/cli-tools": "^0.0.1",
     "commander": "^9.2.0",
     "ora": "^4"
   },
