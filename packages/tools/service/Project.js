@@ -18,7 +18,7 @@ class Project {
     address,
     tag,
     dest,
-    cloneOptions = { clone: true },
+    cloneOptions = { },
 
   ) { 
     const repositoryAddress = `${website}:${address}${tag ? `#${tag}` : ''}`
@@ -58,7 +58,7 @@ class Project {
       execSync('yarn', { stdio: 'inherit' })
       celebrate(`${dir ? path.resolve(dir, `./${projectName}`) : projectName}`)
     } catch (err) { 
-      error('安装依赖时出错\n')
+      error('\n安装依赖时出错\n')
       info(err)
     }
   }
