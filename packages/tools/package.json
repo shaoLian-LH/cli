@@ -1,0 +1,20 @@
+{
+  "name": "@slfk/cli-tools",
+  "version": "0.0.0",
+  "description": "cli public tool package",
+  "author": "shaolianfk <871089057@qq.com>",
+  "homepage": "",
+  "license": "MIT",
+  "main": "./index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "download-git-repo": "^3.0.2",
+    "inquirer": "^8.2.4",
+    "ora": "^4"
+  },
+  "dependencies": {
+    "rimraf": "^3.0.2"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "license": "MIT",
+  "workspaces": [
+    "packages/cli",
+    "packages/tools"
+  ],
+  "scripts": {
+    "postinstall": "npx lerna bootstrap"
+  },
+  "private": true,
+  "devDependencies": {
+    "chalk": "^4.0.1",
+    "eslint": "^8.15.0",
+    "lerna": "^4.0.0"
+  },
+  "packageManager": "yarn@1.22.17"
+}
