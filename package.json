@@ -5,13 +5,20 @@
     "packages/tools"
   ],
   "scripts": {
-    "postinstall": "npx lerna bootstrap"
+    "prepare": "husky install",
+    "postinstall": "npx lerna bootstrap --npm-client yarn --use-workspaces",
+    "link:local": "cd ./packages/tools && npm link && cd ../cli && npm link"
+  },
+  "lint-staged": {
+    "packages/**/*.js": "eslint --fix"
   },
   "private": true,
   "devDependencies": {
     "chalk": "^4.0.1",
     "eslint": "^8.15.0",
-    "lerna": "^4.0.0"
+    "husky": "^8.0.1",
+    "lerna": "^4.0.0",
+    "lint-staged": "^12.4.1"
   },
   "packageManager": "yarn@1.22.17"
 }
