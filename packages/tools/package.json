@@ -1,6 +1,6 @@
 {
   "name": "@slfk/cli-tools",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "cli public tool package",
   "author": "shaolianfk <871089057@qq.com>",
   "homepage": "",
@@ -14,9 +14,9 @@
     "access": "public"
   },
   "dependencies": {
-    "rimraf": "^3.0.2",
     "download-git-repo": "^3.0.2",
     "inquirer": "^8.2.4",
-    "ora": "^4"
+    "ora": "^4",
+    "rimraf": "^3.0.2"
   }
 }
