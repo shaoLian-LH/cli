@@ -1,7 +1,10 @@
 #! /usr/bin/env node
 const pkg = require('./package.json')
 const { program } = require('commander')
-const { createProject } = require('@slfk/cli-tools')
+const { createProject, checkNodeVersion, checkNewCliVersion } = require('@slfk/cli-tools')
+
+checkNodeVersion()
+checkNewCliVersion(pkg.version)
 
 // 创建模板
 program
