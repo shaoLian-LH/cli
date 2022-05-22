@@ -9,11 +9,11 @@
     "slfk": "./index.js"
   },
   "engines": {
-    "node": ">= 12"
+    "node": ">= 14.17.3"
   },
   "scripts": {
-    "link:local": "yarn link @slfk/cli-tools && yarn link",
-    "unlink:global": "yarn unlink -g @slfk/cli"
+    "link:local": "npm link",
+    "unlink:local": "npm unlink -g @slfk/cli"
   },
   "publishConfig": {
     "access": "public"

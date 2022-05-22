@@ -7,11 +7,11 @@
   "license": "MIT",
   "main": "./index.js",
   "engines": {
-    "node": ">= 12"
+    "node": ">= 14.17.3"
   },
   "scripts": {
-    "link:local": "yarn link",
-    "unlink:global": "yarn unlink -g @slfk/cli-tools"
+    "link:local": "npm link",
+    "unlink:local": "npm unlink -g @slfk/cli-tools"
   },
   "publishConfig": {
     "access": "public"

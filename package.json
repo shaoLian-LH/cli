@@ -6,9 +6,9 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "postinstall": "npx lerna bootstrap --npm-client yarn --use-workspaces",
-    "link:local": "npx lerna run link:local",
-    "unlink:global": "npx lerna run unlink:global"
+    "postinstall": "npx lerna bootstrap --npm-client pnpm --use-workspaces",
+    "link:local": "npx lerna run --npm-client pnpm link:local",
+    "unlink:local": "npx lerna run --npm-client pnpm unlink:local"
   },
   "lint-staged": {
     "packages/**/*.js": "eslint --fix"
@@ -21,5 +21,5 @@
     "lerna": "^4.0.0",
     "lint-staged": "^12.4.1"
   },
-  "packageManager": "yarn@1.22.17"
+  "packageManager": "pnpm@7.1.3"
 }
