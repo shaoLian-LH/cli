@@ -8,6 +8,9 @@
   "bin": {
     "slfk": "./index.js"
   },
+  "engines": {
+    "node": ">= 12"
+  },
   "scripts": {
     "link:local": "yarn link @slfk/cli-tools && yarn link",
     "unlink:global": "yarn unlink -g @slfk/cli"
