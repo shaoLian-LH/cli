@@ -5,7 +5,6 @@ const autoWakeVSCode = (project) => {
   try {
     execSync(`code ./${project}`)
   } catch (_ignoredError) { 
-    error('code失败 - ', _ignoredError)
   }
 }
 
