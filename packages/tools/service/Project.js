@@ -68,15 +68,13 @@ class Project {
         execSync('pnpm install', { stdio: 'inherit' })
         break;
       }
-      
-      celebrate(`${dir ? path.resolve(dir, `./${projectName}`) : projectName}`)
     } catch (err) { 
       error('\n安装依赖时出错\n')
-      info(err)
+      exitWithError(err)
     }
   }
 
-  async createWithTemplate({ template, dir, projectName, tag, packageManager }) {
+  async createWithTemplate({ template, dir, projectName, tag, packageManager, wake }) {
     const preset = projectPresets[template]
     if (!preset) { 
       error(`没有该模板 ${preset}`)
@@ -94,6 +92,7 @@ class Project {
     this._moveToProjectDir(targetPath)
     await this._initGitRepository()
     await this._installDependencies({ dir, projectName, packageManager })
+    celebrate(`${dir ? path.resolve(dir, `./${projectName}`) : projectName}`, wake)
   }
 }
 

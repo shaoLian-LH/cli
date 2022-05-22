@@ -48,7 +48,8 @@ class Generator {
       template,
       tag,
       dir = false,
-      force = false
+      force = false,
+      wake = true
     } = this.options
 
     const targetPath = path.resolve(process.cwd(), `./${dir || ''}`, this.projectName)
@@ -88,7 +89,8 @@ class Generator {
       dir,
       projectName: this.projectName,
       tag,
-      packageManager
+      packageManager,
+      wake
     })
   }
 }
