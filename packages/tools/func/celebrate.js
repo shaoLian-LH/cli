@@ -1,9 +1,9 @@
 const { info } = require('../service/Logger.js')
 const { execSync } = require('child_process')
 
-const autoWakeVSCode = (project) => { 
+const autoWakeVSCode = () => { 
   try {
-    execSync(`code ${project}`)
+    execSync(`code .`)
   } catch (_ignoredError) { 
   }
 }
@@ -17,6 +17,6 @@ module.exports.celebrate = (project, { awakeVSCode, packageManager } = { awakeVS
     info(`🛹 请进入 ${project} 文件夹，运行工程\n`)
   }
   if (awakeVSCode) { 
-    autoWakeVSCode(project)
+    autoWakeVSCode()
   }
 }
