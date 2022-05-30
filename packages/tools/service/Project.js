@@ -7,9 +7,9 @@ const { celebrate } = require('../func/celebrate.js')
 const path = require('path')
 const { projectPresets, presetList } = require('../setting/presets.js')
 
-class Project { 
+class Project {
 
-  async _moveToProjectDir(targetPath) { 
+  async _moveToProjectDir(targetPath) {
     process.chdir(`${targetPath}/`)
   }
 
@@ -18,16 +18,16 @@ class Project {
     address,
     tag,
     dest,
-    cloneOptions = { },
+    cloneOptions = {},
 
-  ) { 
+  ) {
     const repositoryAddress = `${website}:${address}${tag ? `#${tag}` : ''}`
 
-    const downloadTemplateRepo = () => new Promise((resolve, reject) => { 
-      downloadGitRepo(repositoryAddress, dest, cloneOptions, (err) => { 
+    const downloadTemplateRepo = () => new Promise((resolve, reject) => {
+      downloadGitRepo(repositoryAddress, dest, cloneOptions, (err) => {
         if (!err) {
           resolve()
-        } else { 
+        } else {
           reject()
           exitWithError(err)
         }
@@ -37,8 +37,8 @@ class Project {
     await wrapLoading(downloadTemplateRepo, '正在下载模板\n')
   }
 
-  async _initGitRepository() { 
-    await wrapLoading(() => { 
+  async _initGitRepository() {
+    await wrapLoading(() => {
       execSync('git init')
     }, '正在初始化git仓库', {
       success: 'git仓库初始化成功',
@@ -53,11 +53,14 @@ class Project {
   } = {
     dir: undefined,
     projectName: undefined,
-    packageManager: 'npm'
-  }) { 
+    packageManager: undefined
+  }) {
+    if (!packageManager) {
+      return
+    }
     try {
       info('\n正在拉取依赖...')
-      switch (packageManager) { 
+      switch (packageManager) {
       case 'npm':
         execSync('npm install', { stdio: 'inherit' })
         break;
@@ -68,7 +71,7 @@ class Project {
         execSync('pnpm install', { stdio: 'inherit' })
         break;
       }
-    } catch (err) { 
+    } catch (err) {
       error('\n安装依赖时出错\n')
       exitWithError(err)
     }
@@ -76,7 +79,7 @@ class Project {
 
   async createWithTemplate({ template, dir, projectName, tag, packageManager, wake }) {
     const preset = projectPresets[template]
-    if (!preset) { 
+    if (!preset) {
       error(`没有该模板 ${preset}`)
       info(`当前支持：${presetList}`)
       exitWithError('没有对应的模板')
@@ -92,7 +95,10 @@ class Project {
     this._moveToProjectDir(targetPath)
     await this._initGitRepository()
     await this._installDependencies({ dir, projectName, packageManager })
-    celebrate(`${dir ? path.resolve(dir, `./${projectName}`) : projectName}`, wake)
+    celebrate(
+      `${dir ? path.resolve(dir, `./${projectName}`) : projectName}`,
+      { awakeVSCode: wake, packageManager }
+    )
   }
 }
 

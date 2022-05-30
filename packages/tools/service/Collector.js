@@ -3,7 +3,7 @@ const { getPackageManagerList } = require('./PackageManagerList.js')
 const { TEMPLATE_MAIN_TYPE } = require('../enumeration/TEMPLATE_MAIN_TYPE.js')
 
 // 询问用户使用的主模板类型
-const mainTemplateTypeInquirer = async function () { 
+const mainTemplateTypeInquirer = async function () {
   return inquirer
     .prompt([
       {
@@ -26,7 +26,7 @@ const mainTemplateTypeInquirer = async function () {
 }
 
 // 询问用户使用哪一种项目模板
-const projectTemplateInquirer = async function () { 
+const projectTemplateInquirer = async function () {
   return inquirer.prompt([{
     type: 'list',
     name: 'runtime',
@@ -67,7 +67,7 @@ const projectTemplateInquirer = async function () {
 }
 
 // 询问用户使用哪一种工具库模板
-const libraryTemplateInquirer = async function () { 
+const libraryTemplateInquirer = async function () {
   return inquirer
     .prompt([{
       type: 'list',
@@ -81,14 +81,15 @@ const libraryTemplateInquirer = async function () {
 }
 
 // 通用的，基础的询问
-const basicInquirer = async function () { 
-  const packageManagerList = getPackageManagerList() || ['npm']
+const basicInquirer = async function () {
+  const packageManagerList = getPackageManagerList().map(manager => ({ name: manager, value: manager }))
+
   return inquirer
     .prompt([{
       type: 'list',
       name: 'packageManager',
       message: '您想使用什么包管理器？',
-      choices: packageManagerList.map(manager => ({ name: manager, value: manager }))
+      choices: [...packageManagerList, { name: '不进行依赖安装', value: undefined }]
     }])
 }
 
