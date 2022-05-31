@@ -46,17 +46,16 @@ const projectTemplateInquirer = async function () {
     choices: [{
       name: 'Antd',
       value: 'antd'
-    }, { // TODO: element-plus 模板
+    }, {
       name: 'element-plus',
-      value: 'element',
-      disabled: 'TODO'
+      value: 'element'
     }]
   }, {
     type: 'list',
     name: 'cssLibrary',
     message: '您要基于什么css库创建工程？',
     choices: [{
-      name: '我必须使用tailwind',
+      name: 'tailwind',
       value: 'tailwind'
     }, { // TODO: 裸工程
       name: '由不得你',

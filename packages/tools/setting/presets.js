@@ -15,6 +15,10 @@ const projectPresets = {
   'vue3-antd-tailwind': {
     website: 'github',
     address: 'shaoLian-LH/vite-tailwind-template',
+  },
+  'vue3-element-tailwind': {
+    website: 'github',
+    address: 'cloudhao1999/cloud-app-admin',
   }
 }
 
