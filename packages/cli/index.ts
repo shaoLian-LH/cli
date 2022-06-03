@@ -1,7 +1,14 @@
 #! /usr/bin/env node
-const pkg = require('./package.json')
-const { program } = require('commander')
-const { createProject, checkNodeVersion, checkNewCliVersion } = require('@slfk/cli-tools')
+import { program } from 'commander'
+import { createProject, checkNodeVersion, checkNewCliVersion } from '@slfk/cli-tools'
+import { readFileSync } from 'fs'
+import { fileURLToPath } from 'url';
+import path from 'path'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const pkg = JSON.parse(readFileSync(path.resolve(__dirname, '../package.json'), { encoding: 'utf-8' }))
 
 checkNodeVersion(pkg.engines.node, 'slfk create')
 checkNewCliVersion(pkg.version)

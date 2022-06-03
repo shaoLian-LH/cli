@@ -1,6 +1,12 @@
-const ora = require('ora')
+import ora, { Color } from 'ora'
 
-module.exports.wrapLoading = async (func, msg = '', options = {}) => { 
+export interface IWrapOptions { 
+  color?: Color
+  success?: string | undefined
+  failed?: string | undefined
+}
+
+export const wrapLoading = async (func: () => void, msg = '', options: IWrapOptions = {}) => { 
   const spinner = ora(msg)
   const {
     color = 'yellow',

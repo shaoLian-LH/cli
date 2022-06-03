@@ -1,17 +1,19 @@
 {
   "name": "@slfk/cli-tools",
   "version": "0.3.0",
+  "type": "module",
   "description": "cli public tool package",
   "author": "shaolianfk <871089057@qq.com>",
   "homepage": "",
   "license": "MIT",
-  "main": "./index.js",
+  "main": "lib/index.js",
   "engines": {
-    "node": ">= 14.17.3"
+    "node": ">= 12"
   },
   "scripts": {
-    "link:local": "npm link",
-    "unlink:local": "npm unlink -g @slfk/cli-tools"
+    "build": "rimraf ./lib && tsc -p . && npx chmod 755 ./lib/index.js",
+    "link:local": "yarn build && yarn link",
+    "unlink:local": "yarn unlink -g @slfk/cli-tools"
   },
   "publishConfig": {
     "access": "public"
@@ -23,10 +25,18 @@
     "脚手架"
   ],
   "dependencies": {
+    "@types/semver": "^7.3.9",
+    "@types/inquirer": "^8.2.1",
+    "@types/rimraf": "^3.0.2",
+    "chalk": "^5.0.1",
     "download-git-repo": "^3.0.2",
     "inquirer": "^8.2.4",
-    "ora": "^4",
+    "ora": "^6.1.0",
     "rimraf": "^3.0.2",
     "semver": "^7.3.7"
-  }
+  },
+  "files": [
+    "lib",
+    "package.json"
+  ]
 }

@@ -1,17 +1,16 @@
-'use strict'
-const { execSync } = require('child_process')
+import { execSync } from 'child_process'
 
 const versionRegex = /d*.d*.d*/
 
-const execCmd = (cmd) => { 
+export const execCmd = (cmd: string) => { 
   try {
-    return execSync(cmd, { encoding: 'utf-8', stdio: 'pipe' }).match(versionRegex).length !== 0
+    return execSync(cmd, { encoding: 'utf-8', stdio: 'pipe' }).match(versionRegex)
   } catch (e) { 
     return false
   }
 }
 
-const getPackageManagerList = () => {
+export const getPackageManagerList = () => {
   return [{
     tool: 'yarn',
     cmd: 'yarn -v'
@@ -24,8 +23,4 @@ const getPackageManagerList = () => {
   }]
     .map(setting => execCmd(setting.cmd) ? setting.tool : undefined)
     .filter(valid => valid)
-}
-
-module.exports = {
-  getPackageManagerList
 }

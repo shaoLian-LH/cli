@@ -1,19 +1,21 @@
 {
   "name": "@slfk/cli",
   "version": "0.3.0",
+  "type": "module",
   "description": "personal cli tool",
   "author": "shaolianfk <871089057@qq.com>",
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/index.js",
   "bin": {
-    "slfk": "./index.js"
+    "slfk": "lib/index.js"
   },
   "engines": {
-    "node": ">= 14.17.3"
+    "node": ">= 12"
   },
   "scripts": {
-    "link:local": "npm link",
-    "unlink:local": "npm unlink -g @slfk/cli"
+    "build": "rimraf ./lib && tsc -p . && npx chmod 755 ./lib/index.js",
+    "link:local": "yarn build && yarn link",
+    "unlink:local": "yarn unlink -g @slfk/cli"
   },
   "publishConfig": {
     "access": "public"
@@ -26,8 +28,9 @@
   ],
   "dependencies": {
     "@slfk/cli-tools": "^0.3.0",
-    "commander": "^9.2.0",
-    "ora": "^4",
-    "rimraf": "^3.0.2"
-  }
+    "commander": "^9.3.0"
+  },
+  "files": [
+    "lib"
+  ]
 }

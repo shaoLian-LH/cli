@@ -5,21 +5,31 @@
     "packages/tools"
   ],
   "scripts": {
+    "build": "lerna run build",
+    "clean": "lerna clean",
+    "link:local": "lerna run link:local",
     "prepare": "husky install",
-    "postinstall": "npx lerna bootstrap --npm-client pnpm --use-workspaces",
-    "link:local": "npx lerna run --npm-client pnpm link:local",
-    "unlink:local": "npx lerna run --npm-client pnpm unlink:local"
+    "postinstall": "lerna bootstrap",
+    "unlink:local": "lerna run unlink:local"
   },
   "lint-staged": {
     "packages/**/*.js": "eslint --fix"
   },
   "private": true,
   "devDependencies": {
-    "chalk": "^4.0.1",
+    "@types/node": "^12.20.54",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "chmod": "^0.2.1",
     "eslint": "^8.15.0",
     "husky": "^8.0.1",
-    "lerna": "^4.0.0",
-    "lint-staged": "^12.4.1"
+    "lerna": "^5.0.0",
+    "lint-staged": "^12.4.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.5.0"
   },
-  "packageManager": "pnpm@7.1.3"
+  "packageManager": "yarn@1.22.18",
+  "dependencies": {
+    "rimraf": "^3.0.2"
+  }
 }

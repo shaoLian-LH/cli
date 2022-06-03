@@ -1,5 +1,17 @@
+export type projectChoices = 'rollup' | 'vite-antd-tailwind' | 'vue3-antd-tailwind' | 'vue3-element-tailwind'
 
-const projectPresets = {
+interface ITag { 
+  list: Array<string>
+  default: string
+}
+
+export interface IProjectPreset { 
+  website: string
+  address: string
+  tag?: ITag
+}
+
+const projectPresets: Record<string, IProjectPreset> = {
   'rollup': {
     website: 'github',
     address: 'shaoLian-LH/rollup-ts-template',
@@ -24,7 +36,7 @@ const projectPresets = {
 
 const presetList = Object.keys(projectPresets).join(', ')
 
-module.exports = {
+export { 
   projectPresets,
   presetList
 }

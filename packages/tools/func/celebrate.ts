@@ -1,5 +1,5 @@
-const { info } = require('../service/Logger.js')
-const { execSync } = require('child_process')
+import { info } from '../service/Logger.js'
+import { execSync } from 'child_process'
 
 const autoWakeVSCode = () => { 
   try {
@@ -8,7 +8,12 @@ const autoWakeVSCode = () => {
   }
 }
 
-module.exports.celebrate = (project, { awakeVSCode, packageManager } = { awakeVSCode: true, packageManager: undefined }) => { 
+interface ICelebrate { 
+  awakeVSCode: boolean
+  packageManager: string | undefined
+}
+
+export const celebrate = (project: string, { awakeVSCode, packageManager }: ICelebrate = { awakeVSCode: true, packageManager: undefined }) => { 
   info('\n🎉 创建结束')
   if (!packageManager) {
     info(`🛹 请进入 ${project} 文件夹`)

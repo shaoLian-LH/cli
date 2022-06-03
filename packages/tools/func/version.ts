@@ -1,11 +1,10 @@
-const semver = require('semver')
-const process = require('process')
-const { error, info } = require('../service/Logger.js')
-const { execSync } = require('child_process')
-const chalk = require('chalk')
-const { exit } = require('./exit.js')
+import semver from 'semver'
+import { error, info } from '../service/Logger.js'
+import { execSync } from 'child_process'
+import chalk from 'chalk'
+import { exit } from './exit.js'
 
-const checkNodeVersion = (requiredVersion, command) => {
+export const checkNodeVersion = (requiredVersion: string, command: string) => {
   if (!semver.satisfies(process.version, requiredVersion, { includePrerelease: true })) {
     error(`当前命令 ${command} 需要在 ${requiredVersion} 版本下执行，
 但当前环境为 Node ${process.version}
@@ -14,7 +13,7 @@ const checkNodeVersion = (requiredVersion, command) => {
   }
 }
 
-const checkNewCliVersion = (curVersion) => {
+export const checkNewCliVersion = (curVersion: string) => {
   const res = execSync('npm show @slfk/cli version', { encoding: 'utf-8' }).replace('\n', '')
   if (semver.gt(res, curVersion)) {
     const splitContent = '───────────────'
@@ -28,9 +27,4 @@ const checkNewCliVersion = (curVersion) => {
   │${splitContent} 请运行 ${chalk.green(`npm i -g @slfk/cli`)} 进行更新${splitContent}│
   ${wrapperFooterContent}\n`)
   }
-}
-
-module.exports = {
-  checkNodeVersion,
-  checkNewCliVersion
 }

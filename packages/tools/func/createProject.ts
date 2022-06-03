@@ -1,30 +1,43 @@
-const { error, exitWithError } = require('../service/Logger.js')
-const { exit }  = require('./exit.js')
-const { wrapLoading }  = require('./loading.js')
-const path = require('path')
-const fs = require('fs')
-const rimraf = require('rimraf')
-const ProjectService = require('../service/Project.js')
-const {
+import { error, exitWithError } from '../service/Logger.js'
+import { exit }  from './exit.js'
+import { wrapLoading } from './loading.js'
+import path from 'path'
+import fs from 'fs'
+import rimraf from 'rimraf'
+import ProjectService from '../service/Project.js'
+import {
   basicInquirer,
   mainTemplateTypeInquirer,
   libraryTemplateInquirer,
   projectTemplateInquirer
-} = require('../service/Collector.js')
-const { TEMPLATE_MAIN_TYPE } = require('../enumeration/TEMPLATE_MAIN_TYPE.js')
+} from '../service/Collector.js'
+import { TEMPLATE_MAIN_TYPE } from '../enumeration/TEMPLATE_MAIN_TYPE.js'
+import { projectChoices } from '../setting/presets.js'
+
+interface IGeneratorOptions { 
+  template?: projectChoices
+  tag?: string
+  dir?: string
+  force?: boolean
+  wake?: boolean
+}
+
 class Generator { 
-  constructor (name, options){
+  private projectName: string
+  private options: IGeneratorOptions
+
+  constructor (name: string, options: IGeneratorOptions){
     this.projectName = name
     this.options = options || {}  
   }
 
-  async _generateGuarder({ force, targetPath }) { 
+  async _generateGuarder({ force, targetPath }: { force: boolean, targetPath: string }) { 
     if (fs.existsSync(targetPath) && !force) {
       exitWithError(`已存在目录 ${this.projectName} 在 ${targetPath}`)
     }
   }
 
-  async _clearCurrentFolder(targetPath) { 
+  async _clearCurrentFolder(targetPath: string) { 
     await wrapLoading(
       () => { 
         rimraf.sync(targetPath)
@@ -67,7 +80,7 @@ class Generator {
       
       case TEMPLATE_MAIN_TYPE.PROJECT:
         const { runtime, library, cssLibrary } = await projectTemplateInquirer()
-        presetTemplate = `${runtime}-${library}${cssLibrary ? `-${cssLibrary}` : ''}`
+        presetTemplate = `${runtime}-${library}${cssLibrary ? `-${cssLibrary}` : ''}` as unknown as projectChoices
         break;
 
       case TEMPLATE_MAIN_TYPE.LIBRARY:
@@ -85,8 +98,8 @@ class Generator {
     }
 
     await new ProjectService().createWithTemplate({
-      template: presetTemplate,
-      dir,
+      template: presetTemplate as projectChoices,
+      dir: dir as string,
       projectName: this.projectName,
       tag,
       packageManager,
@@ -96,12 +109,10 @@ class Generator {
 }
 
 const createProject = (
-  name,
+  name: string,
   options = {}
 ) => { 
   new Generator(name, options).create()
 }
 
-module.exports = {
-  createProject
-}
+export { createProject }

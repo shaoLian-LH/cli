@@ -8,5 +8,5 @@
 1. 选择式创建：`slfk create my-rollup-template `
 2. 通过模板创建：`slfk create my-rollup-template -t rollup`
 ## 本地调试
-1. link：`pnpm link:local`
-2. unlink：`pnpm unlink:local `
+1. link：`yarn link:local`
+2. unlink：`yarn unlink:local `
