@@ -9,7 +9,7 @@
     "clean": "lerna clean",
     "link:local": "lerna run link:local",
     "prepare": "husky install",
-    "postinstall": "lerna bootstrap",
+    "postinstall": "lerna init && lerna bootstrap",
     "unlink:local": "lerna run unlink:local"
   },
   "lint-staged": {
@@ -31,5 +31,6 @@
   "packageManager": "yarn@1.22.18",
   "dependencies": {
     "rimraf": "^3.0.2"
-  }
+  },
+  "name": "slfk"
 }
