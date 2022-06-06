@@ -25,9 +25,6 @@
     "脚手架"
   ],
   "dependencies": {
-    "@types/inquirer": "^8.2.1",
-    "@types/rimraf": "^3.0.2",
-    "@types/semver": "^7.3.9",
     "chalk": "^5.0.1",
     "download-git-repo": "^3.0.2",
     "inquirer": "^8.2.4",
@@ -39,5 +36,11 @@
   "files": [
     "lib",
     "package.json"
-  ]
+  ],
+  "devDependencies": {
+    "@types/inquirer": "^8.2.1",
+    "@types/rimraf": "^3.0.2",
+    "@types/semver": "^7.3.9",
+    "@types/node-emoji": "^1.8.1"
+  }
 }
