@@ -34,5 +34,6 @@
         "allowTemplateLiterals": true
       }
     ],
+    "no-case-declarations": 0
   }
 }
