@@ -15,7 +15,7 @@ const projectPresets: Record<string, IProjectPreset> = {
   'cli': {
     website: 'github',
     address: 'shaoLian-LH/cli',
-    tag: 'v0.3.0'
+    tag: 'v0.4.0'
   },
   'vite-antd-tailwind': {
     website: 'github',
