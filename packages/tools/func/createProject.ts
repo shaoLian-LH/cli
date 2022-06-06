@@ -87,6 +87,10 @@ class Generator {
         const { template: templateFromInquirer } = await libraryTemplateInquirer()
         presetTemplate = templateFromInquirer
         break;
+      
+      case TEMPLATE_MAIN_TYPE.CLI:
+        presetTemplate = templateType
+        break;
           
       default:
         presetTemplate = undefined

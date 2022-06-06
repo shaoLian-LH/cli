@@ -1,24 +1,21 @@
 export type projectChoices = 'rollup' | 'vite-antd-tailwind' | 'vue3-antd-tailwind' | 'vue3-element-tailwind'
 
-interface ITag { 
-  list: Array<string>
-  default: string
-}
-
 export interface IProjectPreset { 
   website: string
   address: string
-  tag?: ITag
+  tag?: string
 }
 
 const projectPresets: Record<string, IProjectPreset> = {
   'rollup': {
     website: 'github',
     address: 'shaoLian-LH/rollup-ts-template',
-    tag: {
-      list: ['0.0.1'],
-      default: '0.0.1'
-    }
+    tag: 'v0.0.1'
+  },
+  'cli': {
+    website: 'github',
+    address: 'shaoLian-LH/cli',
+    tag: 'v0.3.0'
   },
   'vite-antd-tailwind': {
     website: 'github',

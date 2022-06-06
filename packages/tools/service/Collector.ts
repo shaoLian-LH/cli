@@ -16,10 +16,9 @@ export const mainTemplateTypeInquirer = async () => {
         }, {
           name: '工具库',
           value: TEMPLATE_MAIN_TYPE.LIBRARY
-        }, { // TODO: 脚手架模板
+        }, {
           name: '脚手架',
           value: TEMPLATE_MAIN_TYPE.CLI,
-          disabled: 'TODO'
         }],
       },
     ])

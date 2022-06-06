@@ -83,12 +83,12 @@ class Project {
       info(`当前支持：${presetList}`)
       exitWithError('没有对应的模板')
     }
-    const { website, address, tag: tagSetting } = preset
+    const { website, address, tag: defaultTag } = preset
     const targetPath = path.resolve(process.cwd(), `./${dir ? dir : ''}`, `./${projectName}`)
     await this._downloadTemplate(
       website,
       address,
-      tag || tagSetting && tagSetting.default,
+      tag || defaultTag,
       targetPath
     )
     this._moveToProjectDir(targetPath)
