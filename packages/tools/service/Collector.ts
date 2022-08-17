@@ -11,13 +11,16 @@ export const mainTemplateTypeInquirer = async () => {
         name: 'templateType',
         message: '您要创建什么类型的模板？',
         choices: [{
-          name: '项目',
-          value: TEMPLATE_MAIN_TYPE.PROJECT
+          name: '前端项目',
+          value: TEMPLATE_MAIN_TYPE.FRONT_END_PROJECT
         }, {
-          name: '工具库',
+          name: '后端项目',
+          value: TEMPLATE_MAIN_TYPE.BACK_END_PROJECT
+        }, {
+          name: '前端工具库',
           value: TEMPLATE_MAIN_TYPE.LIBRARY
         }, {
-          name: '脚手架',
+          name: '前端脚手架',
           value: TEMPLATE_MAIN_TYPE.CLI,
         }],
       },
@@ -25,7 +28,7 @@ export const mainTemplateTypeInquirer = async () => {
 }
 
 // 询问用户使用哪一种项目模板
-export const projectTemplateInquirer = async () => {
+export const frontEndProjectTemplateInquirer = async () => {
   return inquirer.prompt([{
     type: 'list',
     name: 'runtime',
@@ -62,6 +65,20 @@ export const projectTemplateInquirer = async () => {
       disabled: 'TODO'
     }]
   }])
+}
+
+// 询问用户使用哪一种后端模板
+export const backEndProjectTemplateInquirer = async () => {
+  return inquirer
+    .prompt([{
+      type: 'list',
+      name: 'template',
+      message: '您要创建什么模板？',
+      choices: [{
+        name: 'nest-base',
+        value: 'nest-base'
+      }]
+    }])
 }
 
 // 询问用户使用哪一种工具库模板

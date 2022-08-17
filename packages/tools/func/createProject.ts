@@ -9,7 +9,8 @@ import {
   basicInquirer,
   mainTemplateTypeInquirer,
   libraryTemplateInquirer,
-  projectTemplateInquirer
+  frontEndProjectTemplateInquirer,
+  backEndProjectTemplateInquirer
 } from '../service/Collector.js'
 import { TEMPLATE_MAIN_TYPE } from '../enumeration/TEMPLATE_MAIN_TYPE.js'
 import { projectChoices } from '../setting/presets.js'
@@ -78,9 +79,14 @@ class Generator {
       const { templateType } = await mainTemplateTypeInquirer()
       switch (templateType) { 
       
-      case TEMPLATE_MAIN_TYPE.PROJECT:
-        const { runtime, library, cssLibrary } = await projectTemplateInquirer()
+      case TEMPLATE_MAIN_TYPE.FRONT_END_PROJECT:
+        const { runtime, library, cssLibrary } = await frontEndProjectTemplateInquirer()
         presetTemplate = `${runtime}-${library}${cssLibrary ? `-${cssLibrary}` : ''}` as unknown as projectChoices
+        break;
+      
+      case TEMPLATE_MAIN_TYPE.BACK_END_PROJECT:
+        const { template } = await backEndProjectTemplateInquirer()
+        presetTemplate = template  
         break;
 
       case TEMPLATE_MAIN_TYPE.LIBRARY:

@@ -28,6 +28,10 @@ const projectPresets: Record<string, IProjectPreset> = {
   'vue3-element-tailwind': {
     website: 'github',
     address: 'cloudhao1999/cloud-app-admin',
+  },
+  'nest-base': {
+    website: 'github',
+    address: 'shaoLian-LH/nest-template',
   }
 }
 
