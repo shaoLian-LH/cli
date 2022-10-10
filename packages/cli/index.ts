@@ -11,7 +11,6 @@ const __dirname = path.dirname(__filename);
 const pkg = JSON.parse(readFileSync(path.resolve(__dirname, '../package.json'), { encoding: 'utf-8' }))
 
 checkNodeVersion(pkg.engines.node, 'slfk create')
-checkNewCliVersion(pkg.version)
 
 program
   .version(pkg.version, '-v, --version', '查看版本')
@@ -30,3 +29,4 @@ program
 
 program.parse(process.argv)
 
+checkNewCliVersion(pkg.version)

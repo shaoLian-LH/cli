@@ -13,7 +13,7 @@ export const checkNodeVersion = (requiredVersion: string, command: string) => {
   }
 }
 
-export const checkNewCliVersion = (curVersion: string) => {
+export const checkNewCliVersion = async (curVersion: string) => {
   const res = execSync('npm show @slfk/cli version', { encoding: 'utf-8' }).replace('\n', '')
   if (semver.gt(res, curVersion)) {
     const splitContent = '───────────────'

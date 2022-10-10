@@ -6,7 +6,7 @@ export interface IWrapOptions {
   failed?: string | undefined
 }
 
-export const wrapLoading = async (func: () => void, msg = '', options: IWrapOptions = {}) => { 
+export const wrapLoading = async (func: () => void | Promise<any>, msg = '', options: IWrapOptions = {}) => { 
   const spinner = ora(msg)
   const {
     color = 'yellow',
