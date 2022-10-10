@@ -13,7 +13,7 @@
     "unlink:local": "lerna run unlink:local"
   },
   "lint-staged": {
-    "packages/**/*.js": "eslint --fix"
+    "packages/**/*.ts": "eslint --fix"
   },
   "private": true,
   "devDependencies": {
