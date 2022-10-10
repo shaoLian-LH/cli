@@ -9,8 +9,7 @@ export interface IProjectPreset {
 const projectPresets: Record<string, IProjectPreset> = {
   'rollup': {
     website: 'github',
-    address: 'shaoLian-LH/rollup-ts-template',
-    tag: 'v0.0.1'
+    address: 'shaoLian-LH/rollup-ts-template'
   },
   'cli': {
     website: 'github',
