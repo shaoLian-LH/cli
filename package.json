@@ -2,12 +2,17 @@
   "license": "MIT",
   "workspaces": [
     "packages/cli",
-    "packages/tools"
+    "packages/tools",
+    "packages/ui"
   ],
+  "engines": {
+    "node": ">= 18"
+  },
   "scripts": {
     "build": "lerna run build",
     "clean": "lerna clean",
     "link:local": "lerna run link:local",
+    "link:global": "lerna run link:global",
     "prepare": "husky install",
     "postinstall": "lerna init && lerna bootstrap",
     "unlink:local": "lerna run unlink:local"
@@ -17,20 +22,24 @@
   },
   "private": true,
   "devDependencies": {
-    "@types/node": "^12.20.54",
-    "@typescript-eslint/eslint-plugin": "^5.22.0",
-    "@typescript-eslint/parser": "^5.22.0",
+    "@types/node": "^18.14.1",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "chmod": "^0.2.1",
-    "eslint": "^8.15.0",
-    "husky": "^8.0.1",
-    "lerna": "^5.0.0",
-    "lint-staged": "^12.4.1",
-    "tslib": "^2.4.0",
-    "typescript": "^4.5.0"
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "lerna": "^6.5.1",
+    "lint-staged": "^13.1.2",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5"
   },
   "packageManager": "yarn@1.22.18",
   "dependencies": {
-    "rimraf": "^3.0.2"
+    "rimraf": "^4.1.2"
   },
   "name": "slfk"
 }

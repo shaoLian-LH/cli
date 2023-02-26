@@ -3,7 +3,9 @@
   "useWorkspaces": true,
   "packages": [
     "packages/cli",
-    "packages/tools"
+    "packages/tools",
+    "packages/ui"
   ],
-  "version": "0.6.0"
+  "version": "0.6.0",
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }
